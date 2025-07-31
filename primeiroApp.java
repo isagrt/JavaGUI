@@ -1,10 +1,5 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.Color;
-
-
-
+import javax.swing.*;
+import java.awt.*;
 
 
 
@@ -23,10 +18,12 @@ public class primeiroApp{
 
         button.setBackground(Color.GREEN);
         button.setForeground(Color.MAGENTA);
+        button.setPreferredSize(new Dimension(750,50));
 
         
         button1.setBackground(Color.black);
         button1.setForeground(Color.white);
+        button1.setPreferredSize(new Dimension(350,40));
 
         panel.add(button); //adiciona button dentro de panel
         panel.add(button1);
