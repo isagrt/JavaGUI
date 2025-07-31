@@ -1,6 +1,11 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.Color;
+
+
+
+
 
 
 public class primeiroApp{
@@ -11,9 +16,20 @@ public class primeiroApp{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //encerra o programa assim que fecha a janela
 
         JPanel panel = new JPanel();
-        JButton button = new JButton("OIE, NAMOLINDA<3!"); //cria botão e insere uma label para ele
+        panel.setBackground(Color.pink);
+    
+        JButton button = new JButton("OIE CLICA AQUI!"); //cria botão e insere uma label para ele
+        JButton button1 = new JButton("oii aqui tambem!");
+
+        button.setBackground(Color.GREEN);
+        button.setForeground(Color.MAGENTA);
+
         
+        button1.setBackground(Color.black);
+        button1.setForeground(Color.white);
+
         panel.add(button); //adiciona button dentro de panel
+        panel.add(button1);
         frame.add(panel); //adiciona panel dentro do frame
 
         
