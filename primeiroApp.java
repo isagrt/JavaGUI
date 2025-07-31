@@ -21,21 +21,23 @@ public class primeiroApp{
         button.setBackground(Color.lightGray);
         button.setForeground(Color.black);
         button.setPreferredSize(new Dimension(200,50));
+ 
+        //textfild deve se colocar acima do listener do botão para que o evento do botão pegue o texto que inseri
+        JTextField textField = new JTextField(10); //define o tamanho do nosso campo de texto
+        textField.setFont(new Font("Serif", Font.BOLD, 36));
+
+        JLabel label = new JLabel("Digite o seu nome: ");
+        label.setFont(new Font("Serif", Font.BOLD, 36));
 
         //adiciona um Listener no click do botão
         button.addActionListener(e -> { //e recebe o retorno da ação da função
-            JOptionPane.showMessageDialog(null, "AVISO", "Titulo", 3);
+            JOptionPane.showMessageDialog(null, textField.getText(), "Titulo", 3); //comando textFild.getText() é a função utilizada para guardar o valor que digitei no campo de texto
         });
 
         JTextArea textArea = new JTextArea("Escreva algo!");
         JTextArea textArea1 = new JTextArea("Escreva algo!");
 
-        JLabel label = new JLabel("Digite o seu nome: ");
-        label.setFont(new Font("Serif", Font.BOLD, 36));
         
-        JTextField textField = new JTextField(10); //define o tamanho do nosso campo de texto
-        textField.setFont(new Font("Serif", Font.BOLD, 36));
-
         //adicionar em forma crescente do botão ao frame para nenhum se sobressair
         formPanel.add(label);
         formPanel.add(textField);
@@ -46,10 +48,6 @@ public class primeiroApp{
         panel.add(button, BorderLayout.SOUTH); //adiciona button dentro de panel
         frame.add(panel); //adiciona panel dentro do frame
         frame.setLocationRelativeTo(null);
-
-        
-        
-
         frame.setVisible(true); //setVisible sempre localizado no fim do código
         //JOptionPane.showMessageDialog(null, "AVISO", "Titulo", 3); // é uma janela pronta de splash, mostra avisos
     }
