@@ -6,105 +6,114 @@ import java.awt.*;
 public class Cadastro {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Cadastro de Usuario");
-        frame.setSize(700, 700);
+        frame.setSize(800, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+    
         JPanel principal = new JPanel();
         principal.setBackground(Color.GRAY);
-        principal.setLayout(new BorderLayout(10,10));
+        principal.setLayout(new BorderLayout(10, 10));
 
-        //INFROMAÇÃO DE USUARIO
         JPanel infos = new JPanel();
         infos.setBackground(Color.pink);
-        infos.setLayout(new BoxLayout(infos, BoxLayout.Y_AXIS));
         infos.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        JLabel title = new JLabel("Cadastrar:");
-        JLabel blank = new JLabel(" ");
-        title.setFont(new Font("Verdana", Font.BOLD, 15));
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
+        infos.setLayout(new GridBagLayout());
 
-        JLabel name = new JLabel();
-        name.setText("Nome: ");
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
+        //Titulo
+        JLabel title = new JLabel("Cadastrar");
+        title.setFont(new Font("Verdana", Font.BOLD, 20));
+        gbc.gridwidth = 2;
+        infos.add(title, gbc);
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+
+        //Nome
+        JLabel name = new JLabel("Nome: ");
         name.setFont(new Font("Verdana", Font.BOLD, 18));
-
         JTextField nameField = new JTextField(15);
-        nameField.setFont(new Font("Verdana", Font.BOLD, 15));
-        Dimension nameSize = new Dimension(150, 25);
-        nameField.setMaximumSize(nameSize);
-        nameField.setPreferredSize(nameSize);
-        nameField.setAlignmentX(Component.LEFT_ALIGNMENT);
+        nameField.setFont(new Font("Verdana", Font.PLAIN, 15));
+        nameField.setPreferredSize(new Dimension(150, 25));
 
-        JPanel nomeLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        nomeLinha.add(name);
-        nomeLinha.add(nameField);
+        infos.add(name, gbc);
+        gbc.gridx = 1;
+        infos.add(nameField, gbc);
+        gbc.gridy++;
+        gbc.gridx = 0;
 
-        JLabel email = new JLabel();
-        email.setText("Email: ");
+        //Email
+        JLabel email = new JLabel("Email: ");
         email.setFont(new Font("Verdana", Font.BOLD, 18));
-
         JTextField emailField = new JTextField(15);
-        emailField.setFont(new Font("Verdana", Font.BOLD, 15));
+        emailField.setFont(new Font("Verdana", Font.PLAIN, 15));
         emailField.setPreferredSize(new Dimension(150, 25));
-        emailField.setAlignmentX(Component.LEFT_ALIGNMENT);
-        Dimension emailSize = new Dimension(200, 30);
-        emailField.setMaximumSize(emailSize);
-        emailField.setPreferredSize(emailSize);
-        
-        JPanel emailLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        emailLinha.add(email);
-        emailLinha.add(emailField);
 
-        JLabel paises = new JLabel();
-        paises.setText("Pais: ");
+        infos.add(email, gbc);
+        gbc.gridx = 1;
+        infos.add(emailField, gbc);
+        gbc.gridy++;
+        gbc.gridx = 0;
+
+        //Pais
+        JLabel paises = new JLabel("Pais: ");
         paises.setFont(new Font("Verdana", Font.BOLD, 18));
-
-        String [] countries = {"Selecione uma opcao","Alemanha", "Argentina", "Australia", "Brasil", "Canada", "China", "Espanha", "Franca", "India", "Italia"};
+        String[] countries = {"Selecione uma opcao", "Alemanha", "Argentina", "Australia", "Brasil", "Canada", "China", "Espanha", "Franca", "India", "Italia"};
         JComboBox<String> countriesList = new JComboBox<>(countries);
         countriesList.setFont(new Font("Verdana", Font.PLAIN, 15));
         countriesList.setPreferredSize(new Dimension(150, 25));
-        countriesList.setMaximumSize(new Dimension(150, 25));
 
-        JPanel paisLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        paisLinha.add(paises);
-        paisLinha.add(countriesList);
+        infos.add(paises, gbc);
+        gbc.gridx = 1;
+        infos.add(countriesList, gbc);
+        gbc.gridy++;
+        gbc.gridx = 0;
 
+        //Data de nascimento
         JLabel dataLabel = new JLabel("Nascimento: ");
         dataLabel.setFont(new Font("Verdana", Font.BOLD, 18));
-
         JSpinner dataSpinner = new JSpinner(new SpinnerDateModel());
         dataSpinner.setFont(new Font("Verdana", Font.PLAIN, 15));
         dataSpinner.setPreferredSize(new Dimension(150, 25));
-        dataSpinner.setMaximumSize(new Dimension(150, 25));
-        dataSpinner.setAlignmentX(Component.LEFT_ALIGNMENT);
-
         JSpinner.DateEditor editor = new JSpinner.DateEditor(dataSpinner, "dd/MM/yyyy");
         dataSpinner.setEditor(editor);
 
-        JPanel dataLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        
-        dataLinha.add(dataLabel);
-        dataLinha.add(dataSpinner);
-        
+        infos.add(dataLabel, gbc);
+        gbc.gridx = 1;
+        infos.add(dataSpinner, gbc);
+        gbc.gridy++;
+        gbc.gridx = 0;
+
+        //Telefone
+        JLabel telefoneLabel = new JLabel("Telefone: ");
+        telefoneLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+        JTextField telefoneField = new JTextField();
+        telefoneField.setFont(new Font("Verdana", Font.PLAIN, 15));
+        telefoneField.setPreferredSize(new Dimension(150, 25));
+
+        infos.add(telefoneLabel, gbc);
+        gbc.gridx = 1;
+        infos.add(telefoneField, gbc);
+        gbc.gridy++;
+        gbc.gridx = 0;
+
+        //Senha
         JLabel senhaLabel = new JLabel("Senha: ");
         senhaLabel.setFont(new Font("Verdana", Font.BOLD, 18));
-
         JPasswordField senhaField = new JPasswordField(15);
         senhaField.setFont(new Font("Verdana", Font.PLAIN, 15));
-        senhaField.setPreferredSize(new Dimension(200, 30));
-        senhaField.setMaximumSize(new Dimension(200, 30));
+        senhaField.setPreferredSize(new Dimension(150, 25));
 
-        JPanel senhaLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        senhaLinha.add(senhaLabel);
-        senhaLinha.add(senhaField);
+        infos.add(senhaLabel, gbc);
+        gbc.gridx = 1;
+        infos.add(senhaField, gbc);
+        gbc.gridy++;
 
-
-        infos.add(title);
-        infos.add(blank);
-        infos.add(nomeLinha);
-        infos.add(emailLinha);
-        infos.add(paisLinha);
-        infos.add(dataLinha);
-        infos.add(senhaLinha);
 
         //Panel que agrupa os outros dois panel a direita
         JPanel right = new JPanel();
@@ -128,7 +137,7 @@ public class Cadastro {
         right.add(snoopySubmit);
 
         principal.add(right, BorderLayout.EAST);
-        principal.add(infos, BorderLayout.CENTER); //adiciona infos e alinha ao centro
+        principal.add(infos, BorderLayout.CENTER);//adiciona infos e alinha ao centro
         
 
         frame.add(principal);
