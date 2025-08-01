@@ -16,26 +16,95 @@ public class Cadastro {
         //INFROMAÇÃO DE USUARIO
         JPanel infos = new JPanel();
         infos.setBackground(Color.pink);
-        infos.setLayout(new GridBagLayout());
+        infos.setLayout(new BoxLayout(infos, BoxLayout.Y_AXIS));
         infos.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        JLabel title = new JLabel("Cadastrar:");
+        JLabel blank = new JLabel(" ");
+        title.setFont(new Font("Verdana", Font.BOLD, 15));
+        title.setAlignmentX(Component.LEFT_ALIGNMENT);
+
         JLabel name = new JLabel();
         name.setText("Nome: ");
-        name.setFont(new Font("Verdana", Font.BOLD, 25));
+        name.setFont(new Font("Verdana", Font.BOLD, 18));
 
-        JTextField nameField = new JTextField();
-        nameField.setFont(new Font("Verdana", Font.BOLD, 20));
+        JTextField nameField = new JTextField(15);
+        nameField.setFont(new Font("Verdana", Font.BOLD, 15));
+        Dimension nameSize = new Dimension(150, 25);
+        nameField.setMaximumSize(nameSize);
+        nameField.setPreferredSize(nameSize);
+        nameField.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JPanel nomeLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        nomeLinha.add(name);
+        nomeLinha.add(nameField);
 
         JLabel email = new JLabel();
         email.setText("Email: ");
-        email.setFont(new Font("Verdana", Font.BOLD, 25));
+        email.setFont(new Font("Verdana", Font.BOLD, 18));
 
-        JTextField emailField = new JTextField();
-        emailField.setFont(new Font("Verdana", Font.BOLD, 20));
+        JTextField emailField = new JTextField(15);
+        emailField.setFont(new Font("Verdana", Font.BOLD, 15));
+        emailField.setPreferredSize(new Dimension(150, 25));
+        emailField.setAlignmentX(Component.LEFT_ALIGNMENT);
+        Dimension emailSize = new Dimension(200, 30);
+        emailField.setMaximumSize(emailSize);
+        emailField.setPreferredSize(emailSize);
+        
+        JPanel emailLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        emailLinha.add(email);
+        emailLinha.add(emailField);
 
-        infos.add(name);
-        infos.add(nameField);
-        infos.add(email);
-        infos.add(emailField);
+        JLabel paises = new JLabel();
+        paises.setText("Pais: ");
+        paises.setFont(new Font("Verdana", Font.BOLD, 18));
+
+        String [] countries = {"Selecione uma opcao","Alemanha", "Argentina", "Australia", "Brasil", "Canada", "China", "Espanha", "Franca", "India", "Italia"};
+        JComboBox<String> countriesList = new JComboBox<>(countries);
+        countriesList.setFont(new Font("Verdana", Font.PLAIN, 15));
+        countriesList.setPreferredSize(new Dimension(150, 25));
+        countriesList.setMaximumSize(new Dimension(150, 25));
+
+        JPanel paisLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        paisLinha.add(paises);
+        paisLinha.add(countriesList);
+
+        JLabel dataLabel = new JLabel("Nascimento: ");
+        dataLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+
+        JSpinner dataSpinner = new JSpinner(new SpinnerDateModel());
+        dataSpinner.setFont(new Font("Verdana", Font.PLAIN, 15));
+        dataSpinner.setPreferredSize(new Dimension(150, 25));
+        dataSpinner.setMaximumSize(new Dimension(150, 25));
+        dataSpinner.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JSpinner.DateEditor editor = new JSpinner.DateEditor(dataSpinner, "dd/MM/yyyy");
+        dataSpinner.setEditor(editor);
+
+        JPanel dataLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        
+        dataLinha.add(dataLabel);
+        dataLinha.add(dataSpinner);
+        
+        JLabel senhaLabel = new JLabel("Senha: ");
+        senhaLabel.setFont(new Font("Verdana", Font.BOLD, 18));
+
+        JPasswordField senhaField = new JPasswordField(15);
+        senhaField.setFont(new Font("Verdana", Font.PLAIN, 15));
+        senhaField.setPreferredSize(new Dimension(200, 30));
+        senhaField.setMaximumSize(new Dimension(200, 30));
+
+        JPanel senhaLinha = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        senhaLinha.add(senhaLabel);
+        senhaLinha.add(senhaField);
+
+
+        infos.add(title);
+        infos.add(blank);
+        infos.add(nomeLinha);
+        infos.add(emailLinha);
+        infos.add(paisLinha);
+        infos.add(dataLinha);
+        infos.add(senhaLinha);
 
         //Panel que agrupa os outros dois panel a direita
         JPanel right = new JPanel();
