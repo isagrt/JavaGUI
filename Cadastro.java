@@ -20,8 +20,7 @@ public class Cadastro {
         infos.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(15, 1, 15, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -29,6 +28,7 @@ public class Cadastro {
         //Titulo
         JLabel title = new JLabel("Cadastrar");
         title.setFont(new Font("Verdana", Font.BOLD, 20));
+        gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridwidth = 2;
         infos.add(title, gbc);
         gbc.gridy++;
