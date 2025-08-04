@@ -11,11 +11,11 @@ public class Cadastro {
 
     
         JPanel principal = new JPanel();
-        principal.setBackground(Color.GRAY);
+        principal.setBackground(new Color(214, 208, 214));
         principal.setLayout(new BorderLayout(10, 10));
 
         JPanel infos = new JPanel();
-        infos.setBackground(Color.pink);
+        infos.setBackground (new Color(199, 171, 199));
         infos.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         infos.setLayout(new GridBagLayout());
 
@@ -117,21 +117,40 @@ public class Cadastro {
 
         //Panel que agrupa os outros dois panel a direita
         JPanel right = new JPanel();
-        right.setBackground(Color.GRAY);
+        right.setBackground(new Color(214, 208, 214));
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
 
         //Foto do usuario
         JPanel picture = new JPanel();
         picture.setPreferredSize(new Dimension(300, 350));
+        picture.setBackground(new Color(199, 171, 199));
         picture.setMaximumSize(new Dimension(Short.MAX_VALUE, 350));
         picture.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
-        //Snoopy label 
+        ImageIcon origialImage = new ImageIcon("C:\\RepositórioIsadora\\JavaGUI\\JavaGUI\\midia\\gato.jpg"); 
+        Image img = origialImage.getImage();
+        Image imgRedimensionada = img.getScaledInstance(290, 340, Image.SCALE_SMOOTH);
+
+        ImageIcon image = new ImageIcon(imgRedimensionada);
+
+        JLabel imagemLabel = new JLabel(image); 
+
+        picture.add(imagemLabel, BorderLayout.CENTER);
+        //Snoopy panel 
         JPanel snoopySubmit = new JPanel();
         snoopySubmit.setPreferredSize(new Dimension(300, 350));
+        snoopySubmit.setBackground(new Color(199, 171, 199));
         snoopySubmit.setMaximumSize(new Dimension(Short.MAX_VALUE, 350));
         snoopySubmit.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         
+        JLabel gifLabel = new JLabel();
+        ImageIcon icon = new ImageIcon("C:\\RepositórioIsadora\\JavaGUI\\JavaGUI\\midia\\dancing-snoopy.gif");
+        gifLabel.setIcon(icon);
+
+        
+
+        snoopySubmit.add(gifLabel);
+
         right.add(picture);
         right.add(Box.createVerticalStrut(10));
         right.add(snoopySubmit);
