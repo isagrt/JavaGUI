@@ -3,8 +3,12 @@ ou seja, só botar uma imagem qualquer e abaixo um gif do snooppy dançando  com
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+
+
+import javax.sound.sampled.*; //
 public class Cadastro {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         JFrame frame = new JFrame("Cadastro de Usuario");
         frame.setSize(800, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -127,7 +131,7 @@ public class Cadastro {
         picture.setMaximumSize(new Dimension(Short.MAX_VALUE, 350));
         picture.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
-        ImageIcon origialImage = new ImageIcon("C:\\RepositórioIsadora\\JavaGUI\\JavaGUI\\midia\\gato.jpg"); 
+        ImageIcon origialImage = new ImageIcon("midia\\gato.jpg"); 
         Image img = origialImage.getImage();
         Image imgRedimensionada = img.getScaledInstance(290, 340, Image.SCALE_SMOOTH);
 
@@ -144,17 +148,31 @@ public class Cadastro {
         snoopySubmit.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         
         JLabel gifLabel = new JLabel();
-        ImageIcon icon = new ImageIcon("C:\\RepositórioIsadora\\JavaGUI\\JavaGUI\\midia\\dancing-snoopy.gif");
+        ImageIcon icon = new ImageIcon("midia\\dancing-snoopy.gif");
         gifLabel.setIcon(icon);
 
         JButton submit = new JButton("Acessar");
         submit.setBackground(new Color(212, 155, 212));
         submit.setForeground(new Color(87, 87, 87));
         submit.setPreferredSize(new Dimension(200, 50));
+        
+        submit.addActionListener(e -> { //e recebe o retorno da ação da função
+        String nome = nameField.getText().trim();
+        String campoemail = emailField.getText().trim();
+    
+        if (nome.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Ei! Você esqueceu de digitar seu nome", "Ops!", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
 
-         submit.addActionListener(e -> { //e recebe o retorno da ação da função
-            JOptionPane.showMessageDialog(null, nameField.getText(), "Cadastro realizado!!!", 1); //comando textFild.getText() é a função utilizada para guardar o valor que digitei no campo de texto
-        }); 
+        if (!campoemail.contains("@") || !campoemail.contains(".")) {
+        JOptionPane.showMessageDialog(null, "Hmm... esse e-mail parece meio estranho \nConfira se está certinho!", "Email inválido", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+
+        JOptionPane.showMessageDialog(null, nome + ", seu cadastro foi realizado!!", "Parabéns!!!", JOptionPane.INFORMATION_MESSAGE);
+        tocarSom("midia\\Comemoracao.wav");
+});
 
         snoopySubmit.add(gifLabel);
         snoopySubmit.add(submit);
@@ -170,4 +188,19 @@ public class Cadastro {
         frame.add(principal);
         frame.setVisible(true);
     }
+        public static void tocarSom(String caminhoRecurso) {
+        try {
+            File audioFile = new File("midia\\Comemoracao.wav");
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(audioFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(inputStream);
+            clip.start();
+            } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    
 }
+
