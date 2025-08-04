@@ -147,9 +147,17 @@ public class Cadastro {
         ImageIcon icon = new ImageIcon("C:\\RepositórioIsadora\\JavaGUI\\JavaGUI\\midia\\dancing-snoopy.gif");
         gifLabel.setIcon(icon);
 
-        
+        JButton submit = new JButton("Acessar");
+        submit.setBackground(new Color(212, 155, 212));
+        submit.setForeground(new Color(87, 87, 87));
+        submit.setPreferredSize(new Dimension(200, 50));
+
+         submit.addActionListener(e -> { //e recebe o retorno da ação da função
+            JOptionPane.showMessageDialog(null, nameField.getText(), "Cadastro realizado!!!", 1); //comando textFild.getText() é a função utilizada para guardar o valor que digitei no campo de texto
+        }); 
 
         snoopySubmit.add(gifLabel);
+        snoopySubmit.add(submit);
 
         right.add(picture);
         right.add(Box.createVerticalStrut(10));
