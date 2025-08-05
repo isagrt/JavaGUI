@@ -1,5 +1,6 @@
-/* FAZEL UMA TELA DE CADASTRO DE USUaRIO, onde o usuario insere nome, email e data de nascmento(inserir calendario), ao lado insere a foto do usuario no cadastro, 
-ou seja, só botar uma imagem qualquer e abaixo um gif do snooppy dançando  com um botão para submitir */
+/* Ideia: fazer uma tela de cadastro com os campos nome, email, senha e data de nascimento (utilizar jcombobox). 
+Em uma outra parte da tela, inserir uma foto do usuário apenas para exemplo(verificar se há possibilidade do usuario inserir foto) 
+e na terceira e ultima parte de tela, inserir gif do snooppy dançando e comemorando com um botão que realiza uma ação após clicar.  */
 
 import javax.swing.*;
 import java.awt.*;
