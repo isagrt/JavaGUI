@@ -3,23 +3,20 @@ ou seja, só botar uma imagem qualquer e abaixo um gif do snooppy dançando  com
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-
-
-import javax.sound.sampled.*; //
+//import java.io.File;
+//import javax.sound.sampled.*; 
 public class Cadastro {
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         JFrame frame = new JFrame("Cadastro de Usuario");
         frame.setSize(800, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    
         JPanel principal = new JPanel();
         principal.setBackground(new Color(214, 208, 214));
         principal.setLayout(new BorderLayout(10, 10));
 
         JPanel infos = new JPanel();
-        infos.setBackground (new Color(199, 171, 199));
+        infos.setBackground(new Color(199, 171, 199));
         infos.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         infos.setLayout(new GridBagLayout());
 
@@ -29,7 +26,7 @@ public class Cadastro {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        //Titulo
+        // Titulo
         JLabel title = new JLabel("Cadastrar");
         title.setFont(new Font("Verdana", Font.BOLD, 20));
         gbc.anchor = GridBagConstraints.NORTH;
@@ -38,7 +35,7 @@ public class Cadastro {
         gbc.gridy++;
         gbc.gridwidth = 1;
 
-        //Nome
+        // Nome
         JLabel name = new JLabel("Nome: ");
         name.setFont(new Font("Verdana", Font.BOLD, 18));
         JTextField nameField = new JTextField(15);
@@ -51,7 +48,7 @@ public class Cadastro {
         gbc.gridy++;
         gbc.gridx = 0;
 
-        //Email
+        // Email
         JLabel email = new JLabel("Email: ");
         email.setFont(new Font("Verdana", Font.BOLD, 18));
         JTextField emailField = new JTextField(15);
@@ -64,10 +61,11 @@ public class Cadastro {
         gbc.gridy++;
         gbc.gridx = 0;
 
-        //Pais
+        // Pais
         JLabel paises = new JLabel("Pais: ");
         paises.setFont(new Font("Verdana", Font.BOLD, 18));
-        String[] countries = {"Selecione uma opcao", "Alemanha", "Argentina", "Australia", "Brasil", "Canada", "China", "Espanha", "Franca", "India", "Italia"};
+        String[] countries = { "Selecione uma opcao", "Alemanha", "Argentina", "Australia", "Brasil", "Canada", "China",
+                "Espanha", "Franca", "India", "Italia" };
         JComboBox<String> countriesList = new JComboBox<>(countries);
         countriesList.setFont(new Font("Verdana", Font.PLAIN, 15));
         countriesList.setPreferredSize(new Dimension(150, 25));
@@ -78,7 +76,7 @@ public class Cadastro {
         gbc.gridy++;
         gbc.gridx = 0;
 
-        //Data de nascimento
+        // Data de nascimento
         JLabel dataLabel = new JLabel("Nascimento: ");
         dataLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         JSpinner dataSpinner = new JSpinner(new SpinnerDateModel());
@@ -93,7 +91,7 @@ public class Cadastro {
         gbc.gridy++;
         gbc.gridx = 0;
 
-        //Telefone
+        // Telefone
         JLabel telefoneLabel = new JLabel("Telefone: ");
         telefoneLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         JTextField telefoneField = new JTextField();
@@ -106,7 +104,7 @@ public class Cadastro {
         gbc.gridy++;
         gbc.gridx = 0;
 
-        //Senha
+        // Senha
         JLabel senhaLabel = new JLabel("Senha: ");
         senhaLabel.setFont(new Font("Verdana", Font.BOLD, 18));
         JPasswordField senhaField = new JPasswordField(15);
@@ -118,35 +116,34 @@ public class Cadastro {
         infos.add(senhaField, gbc);
         gbc.gridy++;
 
-
-        //Panel que agrupa os outros dois panel a direita
+        // Panel que agrupa os outros dois panel a direita
         JPanel right = new JPanel();
         right.setBackground(new Color(214, 208, 214));
         right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
 
-        //Foto do usuario
+        // Foto do usuario
         JPanel picture = new JPanel();
         picture.setPreferredSize(new Dimension(300, 350));
         picture.setBackground(new Color(199, 171, 199));
         picture.setMaximumSize(new Dimension(Short.MAX_VALUE, 350));
         picture.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
-        ImageIcon origialImage = new ImageIcon("midia\\gato.jpg"); 
+        ImageIcon origialImage = new ImageIcon("midia\\gato.jpg");
         Image img = origialImage.getImage();
         Image imgRedimensionada = img.getScaledInstance(290, 340, Image.SCALE_SMOOTH);
 
         ImageIcon image = new ImageIcon(imgRedimensionada);
 
-        JLabel imagemLabel = new JLabel(image); 
+        JLabel imagemLabel = new JLabel(image);
 
         picture.add(imagemLabel, BorderLayout.CENTER);
-        //Snoopy panel 
+        // Snoopy panel
         JPanel snoopySubmit = new JPanel();
         snoopySubmit.setPreferredSize(new Dimension(300, 350));
         snoopySubmit.setBackground(new Color(199, 171, 199));
         snoopySubmit.setMaximumSize(new Dimension(Short.MAX_VALUE, 350));
         snoopySubmit.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-        
+
         JLabel gifLabel = new JLabel();
         ImageIcon icon = new ImageIcon("midia\\dancing-snoopy.gif");
         gifLabel.setIcon(icon);
@@ -155,24 +152,36 @@ public class Cadastro {
         submit.setBackground(new Color(212, 155, 212));
         submit.setForeground(new Color(87, 87, 87));
         submit.setPreferredSize(new Dimension(200, 50));
-        
-        submit.addActionListener(e -> { //e recebe o retorno da ação da função
-        String nome = nameField.getText().trim();
-        String campoemail = emailField.getText().trim();
-    
-        if (nome.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Ei! Você esqueceu de digitar seu nome", "Ops!", JOptionPane.WARNING_MESSAGE);
-        return;
-        }
 
-        if (!campoemail.contains("@") || !campoemail.contains(".")) {
-        JOptionPane.showMessageDialog(null, "Hmm... esse e-mail parece meio estranho \nConfira se está certinho!", "Email inválido", JOptionPane.WARNING_MESSAGE);
-        return;
-        }
+        submit.addActionListener(e -> { // e recebe o retorno da ação da função
+            String nome = nameField.getText().trim();
+            String campoemail = emailField.getText().trim();
 
-        JOptionPane.showMessageDialog(null, nome + ", seu cadastro foi realizado!!", "Parabéns!!!", JOptionPane.INFORMATION_MESSAGE);
-        tocarSom("midia\\Comemoracao.wav");
-});
+            if (nome.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Ei! Você esqueceu de digitar seu nome", "Ops!",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (!campoemail.contains("@") || !campoemail.contains(".")) {
+                JOptionPane.showMessageDialog(null,
+                        "Hmm... esse e-mail parece meio estranho \nConfira se está certinho!", "Email inválido",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (nome.equalsIgnoreCase("oiie")) {
+                try {
+                    Desktop.getDesktop().browse(new java.net.URI("https://youtu.be/tTF4gN6XhF0?si=B7DDdo75KWPF-Cj_"));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, nome + ", seu cadastro foi realizado!!", "Parabéns!!!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                // tocarSom("midia\\Comemoracao.wav");
+            }
+
+        });
 
         snoopySubmit.add(gifLabel);
         snoopySubmit.add(submit);
@@ -182,25 +191,25 @@ public class Cadastro {
         right.add(snoopySubmit);
 
         principal.add(right, BorderLayout.EAST);
-        principal.add(infos, BorderLayout.CENTER);//adiciona infos e alinha ao centro
-        
+        principal.add(infos, BorderLayout.CENTER);// adiciona infos e alinha ao centro
 
         frame.add(principal);
         frame.setVisible(true);
     }
-        public static void tocarSom(String caminhoRecurso) {
-        try {
-            File audioFile = new File("midia\\Comemoracao.wav");
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(audioFile);
-            Clip clip = AudioSystem.getClip();
-            clip.open(inputStream);
-            clip.start();
-            } catch (Exception e) {
-            e.printStackTrace();
-        }
+    /*
+     * public static void tocarSom(String caminhoRecurso) {
+     * try {
+     * File audioFile = new File("midia\\Comemoracao.wav");
+     * AudioInputStream inputStream = AudioSystem.getAudioInputStream(audioFile);
+     * Clip clip = AudioSystem.getClip();
+     * clip.open(inputStream);
+     * clip.start();
+     * } catch (Exception e) {
+     * e.printStackTrace();
+     * }
+     * 
+     * 
+     * }
+     */
 
-
-    }
-    
 }
-
